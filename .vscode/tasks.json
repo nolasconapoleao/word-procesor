@@ -1,0 +1,22 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run filter",
+            "type": "shell",
+            "command": [
+                "python filter.py",
+                "&&  sort out/digest -o out/digest"
+            ]
+        },
+
+        {
+            "label": "Run freq analysis",
+            "type": "shell",
+            "command": [
+                "python freq_rel.py",
+                "&&  sort out/freq -o out/freq",
+            ]
+        },
+    ]
+}
