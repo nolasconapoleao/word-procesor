@@ -1,9 +1,16 @@
 import re
 
+input_file = 'wordbank/en_GB-large.txt'
 WORDLEN = 5
 
 remove_repeated_letters = False
+to_include = 'ntil'
+to_remove = 'arose'
+
 regex_check = True
+regex_match = []
+regex_discard = [r'^.*in.$']
+
 
 # Count utility
 def count_vowels(word):
@@ -34,26 +41,22 @@ def great_filter(word):
     word = re.sub(r'ú|ù|û|û|ũ|ü',   'u', word)
 
     # Remove any character in forbidden word
-    to_remove = ''
     for c in to_remove:
             if c in word:
                 return False
 
     # Remove words that don't have these letters
-    to_include = ''
     for c in to_include:
         if c not in word:
             return False
 
     if regex_check:
         # Discard match
-        regex_discard = [""" r'.*pr.*' """]
         for rgx in regex_discard:
             if re.search(rgx, word):
                 return False
 
         # Match only
-        regex_match = [r".*(.)\1.*"]
         for rgx in regex_match:
             if not re.search(rgx, word):
                 return False
@@ -72,7 +75,7 @@ def main():
     digest = open('out/digest', 'w')
 
     # Read word bank
-    infile = open('wordbank/en_GB-large.txt', 'r')
+    infile = open(input_file, 'r')
     matches = 0
     for line in infile:
         # Check for 5 character words
