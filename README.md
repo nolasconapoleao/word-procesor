@@ -48,3 +48,6 @@ filter.py : Produces a digest file with words matching the rules
 
 freq-rel.py : Calculates relative letter frequency for the digest file
 ```
+
+## Other resorces
+[Artha](https://artha.sourceforge.net/wiki/index.php/Home)
